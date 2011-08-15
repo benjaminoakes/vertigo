@@ -5,6 +5,8 @@ A simple Ruby wrapper around the VerticalResponse API ("VRAPI").
 
 Vertigo makes working with the VerticalResponse SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.
 
+Author: Benjamin Oakes <hello@benjaminoakes.com>, @benjaminoakes
+
 Installation
 ------------
 
