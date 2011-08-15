@@ -12,12 +12,14 @@ require 'soap/wsdlDriver'
 #
 # @author Benjamin Oakes <hello@benjaminoakes.com>
 class Vertigo::Client
-  WSDL = 'https://api.verticalresponse.com/partner-wsdl/1.0/VRAPI.wsdl'  
+  DURATION_MINUTES = 4
+  WSDL_URL = 'https://api.verticalresponse.com/partner-wsdl/1.0/VRAPI.wsdl'  
 
   # @param [String] username Account username
   # @param [String] password Account password
   # @param [Hash] opts Session options
-  # @option opts [Fixnum] :duration_minutes
+  # @option opts [Fixnum] :duration_minutes Duration of session in minutes
+  # @option opts [String] :wsdl_url Alternative WSDL URL
   #
   # @raise [SOAP::FaultError] when an API call fails
   #
@@ -27,13 +29,14 @@ class Vertigo::Client
   # @example Connect using the specified session options
   #     client = Vertigo::Client.new('you@yourcompany.com', 'your password', :duration_minutes => 5)
   def initialize(username, password, opts = {})
-    # session_duration_minutes = opts[:duration_minutes] || 4
+    session_duration_minutes = opts[:duration_minutes] || DURATION_MINUTES
+    wsdl_url = opts[:wsdl_url] || WSDL_URL
 
-    # @vr_api = SOAP::WSDLDriverFactory.new(WSDL).create_rpc_driver
-    # @session_id = @vr_api.login(
-    #   'username' => username,
-    #   'password' => password,
-    #   'session_duration_minutes' => session_duration_minutes
-    # )
+    @api = SOAP::WSDLDriverFactory.new(wsdl_url).create_rpc_driver
+    @session_id = @api.login(
+      'username' => username,
+      'password' => password,
+      'session_duration_minutes' => session_duration_minutes
+    )
   end
 end
