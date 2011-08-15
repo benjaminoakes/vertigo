@@ -20,6 +20,7 @@ GEM
     rspec-mocks (2.6.0)
     soap4r (1.5.8)
       httpclient (>= 2.1.1)
+    yard (0.7.2)
 
 PLATFORMS
   ruby
@@ -28,3 +29,4 @@ DEPENDENCIES
   rake (~> 0.8.7)
   rspec (~> 2.6.0)
   vertigo!
+  yard (< 1.0.0)

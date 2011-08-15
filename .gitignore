@@ -22,3 +22,4 @@ tmtags
 *.gem
 .bundle
 pkg/*
+.yardoc/*
