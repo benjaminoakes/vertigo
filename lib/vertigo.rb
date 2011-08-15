@@ -1,5 +1,4 @@
-require "vertigo/version"
-
 module Vertigo
-  # Your code goes here...
+  autoload :Client, 'vertigo/client'
+  autoload :VERSION, 'vertigo/version'
 end
