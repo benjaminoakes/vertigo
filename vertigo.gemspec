@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Benjamin Oakes"]
   s.email       = ["boakes@hedgeye.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{A simple Ruby wrapper around the VerticalResponse API ("VRAPI").}
+  s.description = %q{Vertigo makes working with VerticalResponse's SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.}
 
   s.rubyforge_project = "vertigo"
 
