@@ -1,5 +1,4 @@
-Vertigo
-=======
+= Vertigo
 
 A simple Ruby wrapper around the VerticalResponse API ("VRAPI").
 
@@ -7,8 +6,7 @@ Vertigo makes working with the VerticalResponse SOAP API much more Ruby-like.  I
 
 Author: Benjamin Oakes <hello@benjaminoakes.com>, @benjaminoakes
 
-Installation
-------------
+== Installation
 
 Simply add Vertigo to your Gemfile:
 
@@ -18,8 +16,7 @@ If you are unlucky enough not to be using Bundler:
 
     gem install vertigo
 
-Usage
------
+== Usage
 
 Basic usage example:
 
@@ -31,17 +28,14 @@ Basic usage example:
     # Launch a campaign whose ID you already know:
     client.launch_email_campaign(:campaign_id => campaign_id)
 
-Compatibility
--------------
+== Compatibility
 
-* Written against the 2011.08.10 deploy of the VerticalResponse API "v1.0" <http://developers.verticalresponse.com/api/soap/developers-reference/articles/verticalresponse-api-update-for-august-2011/>
+* Written against the 2011.08.10 deploy of the VerticalResponse API "v1.0".  More information: http://developers.verticalresponse.com/api/soap/developers-reference/articles/verticalresponse-api-update-for-august-2011/
 
-Contributing
-------------
+== Contributing
 
 To set up your development environment, run `bash dev-setup.sh`.
 
-Thanks
-------
+== Thanks
 
 * Forrest Chang (@fkchang2000) for the name
