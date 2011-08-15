@@ -31,6 +31,11 @@ Basic usage example:
     # Launch a campaign whose ID you already know:
     client.launch_email_campaign(:campaign_id => campaign_id)
 
+Compatibility
+-------------
+
+* Written against the 2011.08.10 deploy of the VerticalResponse API "v1.0" <http://developers.verticalresponse.com/api/soap/developers-reference/articles/verticalresponse-api-update-for-august-2011/>
+
 Contributing
 ------------
 
