@@ -36,6 +36,10 @@ Basic usage example:
 
 To set up your development environment, run `bash dev-setup.sh`.
 
+When writing documentation:
+
+    bundle exec yard server --reload
+
 == Thanks
 
 * Forrest Chang (@fkchang2000) for the name
