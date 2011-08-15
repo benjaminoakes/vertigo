@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.description = %q{Vertigo makes working with VerticalResponse's SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.}
 
   s.rubyforge_project = "vertigo"
+  
+  s.add_development_dependency('rake', '~> 0.8.7')
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
