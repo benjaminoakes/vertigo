@@ -30,7 +30,7 @@ Basic usage example:
     # Launch a campaign whose ID you already know:
     client.launch_email_campaign(:campaign_id => campaign_id)
 
-For more info, please see {Vertigo::Client} or {http://rubydoc.info/gems/vertigo the docs on RubyDoc.info}.
+For more info, please see {Vertigo::Client} or {the docs on RubyDoc.info}[http://rubydoc.info/gems/vertigo].
 
 == Compatibility
 
