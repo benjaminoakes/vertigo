@@ -10,7 +10,7 @@ require 'soap/wsdlDriver'
 #
 # Because of this, Vertigo::Client regenerates the RPC driver when instantiated as the generated code for VRAPI.wsdl becomes stale over time.  Generating the driver incurs a startup cost, but it's minimal.
 #
-# @author Benjamin Oakes <hello@benjaminoakes.com>
+# @author Benjamin Oakes <hello@benjaminoakes.com>, @benjaminoakes
 class Vertigo::Client
   DURATION_MINUTES = 4
   WSDL_URL = 'https://api.verticalresponse.com/partner-wsdl/1.0/VRAPI.wsdl'  
@@ -38,5 +38,64 @@ class Vertigo::Client
       'password' => password,
       'session_duration_minutes' => session_duration_minutes
     )
+  end
+
+  # This modification lets us write API calls in a more "Rubyish" manner.
+  #
+  # @note camelCase method names are still supported.
+  #
+  # @raise [ArgumentError] when too many arguments or unsupported arguments
+  # @raise [NoMethodError] when the API call is not defined
+  #
+  # @example Unlaunching an email campaign
+  #     client.unlaunch_email_campaign(:campaign_id => 1)
+  #     # Without Vertigo::Client, it would be:
+  #     vrapi.unlaunchEmailCampaign('session_id' => session_id, 'campaign_id' => 1)
+  def method_missing(name, *args, &block)
+    options = args[0]
+    vr_name = camelize_meth(name).intern
+
+    if args.length > 1
+      raise ArgumentError, 'Unexpected number of arguments (not 0 or 1)'
+    elsif options && !options.respond_to?(:keys)
+      raise ArgumentError, "options does not respond to :keys (options.class: #{options.class}, options: #{options.inspect})"
+    end
+
+    if @api.respond_to?(vr_name)
+      vr_args = options ? stringify_keys(options) : {}
+      @api.send(vr_name, {'session_id' => @session_id}.merge(vr_args))
+    else
+      raise NoMethodError, "Undefined VerticalResponse API call: #{vr_name.inspect}"
+    end
+  end
+
+private
+
+  # Camelize a method name
+  def camelize_meth(name)
+    name.to_s.gsub(/_([a-z])/) { $1.upcase }
+  end
+
+  # Recursively stringify keys of Hashes and members of Arrays
+  def stringify_keys(original)
+    if original.respond_to?(:keys)
+      stringified = {}
+
+      original.keys.each do |k|
+        stringified[k.to_s] = stringify_keys(original[k])
+      end
+
+      stringified
+    elsif original.kind_of?(Array)
+      stringified = []
+
+      original.each do |val|
+        stringified << stringify_keys(val)
+      end
+
+      stringified
+    else
+      original
+    end
   end
 end
