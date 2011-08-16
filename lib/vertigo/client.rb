@@ -79,17 +79,9 @@ private
   # Recursively stringify keys of Hashes and members of Arrays
   def stringify_keys(original)
     if original.respond_to?(:keys)
-      original.
-        map { |key, val| [key.to_s, stringify_keys(val)] }.
-        reduce({}) do |result, ary|
-          key, val = ary
-          result[key] = val
-          result
-        end
+      Hash[original.map { |key, val| [key.to_s, stringify_keys(val)] }]
     elsif original.kind_of?(Array)
-      original.
-        map { |val| stringify_keys(val) }.
-        reduce([]) { |result, val| result << val }
+      original.map { |val| stringify_keys(val) }
     else
       original
     end
