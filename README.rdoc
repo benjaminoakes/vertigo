@@ -6,8 +6,8 @@ Vertigo makes working with the VerticalResponse SOAP API much more Ruby-like.  I
 
 Author: Benjamin Oakes <hello@benjaminoakes.com>, @benjaminoakes
 
-http://travis-ci.org/benjaminoakes/vertigo.png ({More info}[http://travis-ci.org/benjaminoakes/vertigo])
 http://stillmaintained.com/benjaminoakes/vertigo.png
+http://travis-ci.org/benjaminoakes/vertigo.png ({More info}[http://travis-ci.org/benjaminoakes/vertigo])
 
 == Installation
 
