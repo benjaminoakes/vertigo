@@ -1,0 +1,1 @@
+* The "soap4r" gem does not play very well with Ruby 1.9.2.  Migrate to a new SOAP interface.
