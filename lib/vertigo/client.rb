@@ -34,8 +34,8 @@ class Vertigo::Client
 
     @api = SOAP::WSDLDriverFactory.new(wsdl_url).create_rpc_driver
     @session_id = @api.login(
-      'username' => username,
-      'password' => password,
+      'username' => username.to_s,
+      'password' => password.to_s,
       'session_duration_minutes' => session_duration_minutes
     )
   end
@@ -72,11 +72,15 @@ class Vertigo::Client
 private
 
   # Camelize a method name
+  # 
+  # @param [String, Symbol] name
   def camelize_meth(name)
     name.to_s.gsub(/_([a-z])/) { $1.upcase }
   end
 
   # Recursively stringify keys of Hashes and members of Arrays
+  #
+  # @param [Hash, Array, Object] original
   def stringify_keys(original)
     if original.respond_to?(:keys)
       Hash[original.map { |key, val| [key.to_s, stringify_keys(val)] }]
