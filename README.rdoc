@@ -34,17 +34,27 @@ For more info, please see {Vertigo::Client}[http://rubydoc.info/gems/vertigo].
 
 == Compatibility
 
+* Requires Ruby 1.8.7 (because of dependency on soap4r)
 * Written against the 2011.08.10 deploy of the VerticalResponse API "v1.0".  More information: http://developers.verticalresponse.com/api/soap/developers-reference/articles/verticalresponse-api-update-for-august-2011/
 
 == Contributing
+
+Wow, you want to contribute?  That's awesome!  Thanks!
 
 To set up your development environment, please run:
 
     bash dev-setup.sh
 
-Among other things, that command makes sure you have run `git flow init` (which makes managing contributions easier).
+Among other things, that command makes sure you have run `git flow init` (which makes managing contributions easier).  Please develop on the +develop+ branch.  When you have something you'd like to share, send a pull request to @benjaminoakes.
 
-When writing documentation:
+=== Notes on Gems
+
+* This is a Ruby Gem, built using Bundler.  For a walkthrough of how that works, see http://railscasts.com/episodes/245-new-gem-with-bundler
+* You get some rake tasks for free (see `rake --tasks`) to help with building and installing
+
+=== Misc.
+
+When writing documentation, this is handy:
 
     bundle exec yard server --reload
 
