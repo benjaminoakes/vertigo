@@ -39,7 +39,11 @@ For more info, please see {Vertigo::Client} or {the docs on RubyDoc.info}[http:/
 
 == Contributing
 
-To set up your development environment, please run `bash dev-setup.sh`.
+To set up your development environment, please run:
+
+    bash dev-setup.sh
+
+Among other things, that command makes sure you have run `git flow init` (which makes managing contributions easier).
 
 When writing documentation:
 
