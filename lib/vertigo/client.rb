@@ -82,7 +82,8 @@ private
   #
   # @param [Hash, Array, Object] original
   def stringify_keys(original)
-    if original.respond_to?(:keys)
+    # I might like to do more duck typing here, but we're making a Hash or Array whether or not it actually was one originally.
+    if original.kind_of?(Hash)
       Hash[original.map { |key, val| [key.to_s, stringify_keys(val)] }]
     elsif original.kind_of?(Array)
       original.map { |val| stringify_keys(val) }

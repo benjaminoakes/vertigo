@@ -1,11 +1,12 @@
 = Vertigo
 
-A simple Ruby wrapper around the VerticalResponse API ("VRAPI").
+Is the VerticalResponse API making you dizzy?
 
-Vertigo makes working with the VerticalResponse SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.
+Vertigo is a simple Ruby wrapper that makes working with the VerticalResponse SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.
 
 Author: Benjamin Oakes <hello@benjaminoakes.com>, @benjaminoakes
 
+http://stillmaintained.com/benjaminoakes/vertigo.png
 http://travis-ci.org/benjaminoakes/vertigo.png ({More info}[http://travis-ci.org/benjaminoakes/vertigo])
 
 == Installation
@@ -20,27 +21,40 @@ If you are unlucky enough not to be using Bundler:
 
 == Usage
 
-Basic usage example:
+Basic example:
 
     require 'vertigo'
     
-    session_duration_minutes = 4
     client = Vertigo::Client.new('username', 'password', :duration_minutes => 5)
 
     # Launch a campaign whose ID you already know:
-    client.launch_email_campaign(:campaign_id => campaign_id)
+    client.launch_email_campaign(:campaign_id => 123456)
 
-For more info, please see {Vertigo::Client} or {the docs on RubyDoc.info}[http://rubydoc.info/gems/vertigo].
+For more info, please see {Vertigo::Client}[http://rubydoc.info/gems/vertigo].
 
 == Compatibility
 
+* Requires Ruby 1.8.7 (because of dependency on soap4r)
 * Written against the 2011.08.10 deploy of the VerticalResponse API "v1.0".  More information: http://developers.verticalresponse.com/api/soap/developers-reference/articles/verticalresponse-api-update-for-august-2011/
 
 == Contributing
 
-To set up your development environment, please run `bash dev-setup.sh`.
+Wow, you want to contribute?  That's awesome!  Thanks!
 
-When writing documentation:
+To set up your development environment, please run:
+
+    bash dev-setup.sh
+
+Among other things, that command makes sure you have run `git flow init` (which makes managing contributions easier).  Please develop on the +develop+ branch.  When you have something you'd like to share, send a pull request to @benjaminoakes.
+
+=== Notes on Gems
+
+* This is a Ruby Gem, built using Bundler.  For a walkthrough of how that works, see http://railscasts.com/episodes/245-new-gem-with-bundler
+* You get some rake tasks for free (see `rake --tasks`) to help with building and installing
+
+=== Misc.
+
+When writing documentation, this is handy:
 
     bundle exec yard server --reload
 
