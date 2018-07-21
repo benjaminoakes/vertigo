@@ -1,5 +1,7 @@
 = Vertigo
 
+(This repository is archived and no longer maintained.)
+
 Is the VerticalResponse API making you dizzy?
 
 Vertigo is a simple Ruby wrapper that makes working with the VerticalResponse SOAP API much more Ruby-like.  It manages your session_id, as well as letting you write methods as launch_email_campaign rather than launchEmailCampaign, and use symbols as keys rather than strings.
